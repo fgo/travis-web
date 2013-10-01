@@ -45,6 +45,7 @@ Travis.FirstSyncView = Travis.View.extend
         )
       , 5000
 
+
 require 'views/accounts'
 require 'views/application'
 require 'views/build'

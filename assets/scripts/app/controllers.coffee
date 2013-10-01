@@ -48,6 +48,16 @@ Travis.FirstSyncController = Em.Controller.extend
 
   isSyncing: Ember.computed.alias('user.isSyncing')
 
+Travis.ProfileRepoController = Em.ObjectController.extend()
+Travis.ProfileRepoSettingsTabController = Em.ObjectController.extend()
+Travis.ProfileRepoSettingsController = Em.Controller.extend
+  needs: ['profileRepoSettingsTab']
+  tab: Ember.computed.alias('controllers.profileRepoSettingsTab.model.tab')
+
+  submit: ->
+    console.log(JSON.stringify(@get('settings')))
+    console.log 'submit'
+
 require 'controllers/accounts'
 require 'controllers/build'
 require 'controllers/builds'

@@ -1,0 +1,76 @@
+{{#travis-tabs}}
+  {{#travis-tab "general" "General Settings"}}
+    {{#settings-form "settings.builds"}}
+      {{settings-input checked=disable_without_travis_yml type="checkbox" id="disable-without-travis"}}
+        <label for="disable-without-travis">Don't build commits without .travis.yml file</label>
+
+      <p>Only build branches matching:</p>
+
+      {{#settings-multiplier "branches.only"}}
+        {{settings-input value=pattern placeholder="pattern"}}
+
+        {{settings-remove-link}}
+      {{/settings-multiplier}}
+
+      {{#settings-add-link "branches.only"}}Add a pattern{{/settings-add-link}}
+
+      <p>Exclude branches matching:</p>
+
+      {{#settings-multiplier "branches.exclude"}}
+        {{settings-input value=pattern placeholder="pattern"}}
+
+        {{settings-remove-link}}
+      {{/settings-multiplier}}
+
+      {{#settings-add-link "branches.exclude"}}Add a pattern{{/settings-add-link}}
+
+      <p>
+        <button type="submit">Submit</button>
+      </p>
+    {{/settings-form}}
+  {{/travis-tab}}
+
+  {{#travis-tab "notifications" "Notifications"}}
+    {{#settings-form "settings.email"}}
+      <h4>E-mail</h4>
+
+      {{settings-input checked=enabled type="checkbox" id="email-enabled"}}
+        <label for="email-enabled">E-mail enabled</label>
+
+      <h4>Additional emails</h4>
+
+      {{#settings-multiplier "additional_emails"}}
+        {{settings-input value=email placeholder="email"}}
+
+        {{settings-remove-link}}
+      {{/settings-multiplier}}
+
+      {{#settings-add-link "additional_emails"}}Add an email{{/settings-add-link}}
+
+      <h4>When to send email</h4>
+
+      <label for="on_success">On success:</label>
+      {{settings-select value=on_success options="always,never,change"}}
+      <label for="on_failure">On failure:</label>
+      {{settings-select value=on_failure options="always,never,change"}}
+
+    {{/settings-form}}
+
+    {{#settings-form "settings.campfire"}}
+      <h4>Campfire</h4>
+      <h5>Rooms:</h5>
+      {{#settings-multiplier "rooms"}}
+        {{settings-input value=subdomain placeholder="subdomain"}}:{{settings-input value=token type="password" placeholder="api token"}}@{{settings-input value=name placeholder="room name"}}
+
+        {{settings-remove-link}}
+      {{/settings-multiplier}}
+
+      {{#settings-add-link "rooms"}}Add room{{/settings-add-link}}
+
+      <p>
+        <button type="submit">Submit</button>
+      </p>
+    {{/settings-form}}
+  {{/travis-tab}}
+{{/travis-tabs}}
+
